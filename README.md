@@ -5,15 +5,9 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/webmavens/laravel-faxage/Check%20&%20fix%20styling?label=code%20style)](https://github.com/webmavens/laravel-faxage/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/webmavens/laravel-faxage.svg?style=flat-square)](https://packagist.org/packages/webmavens/laravel-faxage)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+## What It Does
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-faxage.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-faxage)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package allows you to send/resend/list/get and notify faxes through faxage with laravel.
 
 ## Installation
 
@@ -23,38 +17,77 @@ You can install the package via composer:
 composer require webmavens/laravel-faxage
 ```
 
-You can publish and run the migrations with:
+## Usage
 
-```bash
-php artisan vendor:publish --tag="laravel-faxage-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-faxage-config"
-```
-
-This is the contents of the published config file:
+- Please add below parameters to your .env file.
 
 ```php
-return [
-];
+FAXAGE_USERNAME=YOUR_FAXAGE_USERNAME
+FAXAGE_PASSWORD=YOUR_FAXAGE_PASSOWRD
+FAXAGE_COMPANY_ID=YOUR_COMPANY_ID
+FAXAGE_FAXNO=YOUR_FAXNO
+FAXAGE_URL_NOTIFY=CALLBACK_URL
+FAXAGE_TAG_NUMBER=YOUR_TAG_NUMBER (EX. 1.123.123.1234)
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-faxage-views"
-```
-
-## Usage
+- Send Fax
 
 ```php
 $laravelFaxage = new Webmavens\LaravelFaxage();
-echo $laravelFaxage->echoPhrase('Hello, Webmavens!');
+$response = $laravelFaxage->sendFax($params);
 ```
+
+Below parameters is required for sending fax.
+
+```php
+recipname = DESTINATION_NAME
+faxno = DESTINATION_NUMBER
+faxfilenames = FAX_FILE_NAME
+faxfiledata = FAX_FILE_DATA
+opration = 'sendfax'
+```
+
+- Resend Fax
+
+```php
+$laravelFaxage = new Webmavens\LaravelFaxage();
+$response = $laravelFaxage->sendFax($params);
+```
+
+Below parameters is required for resend fax.
+
+```php
+recipname = DESTINATION_NAME
+faxno = DESTINATION_NUMBER
+faxfilenames = FAX_FILE_NAME
+faxfiledata = FAX_FILE_DATA
+opration = 'resend'
+jobid = FAX_JOB_ID
+```
+
+- List Fax
+
+```php
+$laravelFaxage = new Webmavens\LaravelFaxage();
+$response = $laravelFaxage->listFax();
+```
+
+- Get Fax
+
+```php
+$laravelFaxage = new Webmavens\LaravelFaxage();
+$faxId = FAX_ID
+$response = $laravelFaxage->getFax($faxId);
+```
+
+- Notify Fax
+
+```php
+$laravelFaxage = new Webmavens\LaravelFaxage();
+$faxId = FAX_ID
+$response = $laravelFaxage->notifyFaxage($faxId);
+```
+
 
 ## Testing
 
