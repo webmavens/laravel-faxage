@@ -1,11 +1,6 @@
 # Performs action on fax using faxage api
 ## Send HIPAA Compliant Fax Service by FAXAGE
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/webmavens/laravel-faxage.svg?style=flat-square)](https://packagist.org/packages/webmavens/laravel-faxage)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/webmavens/laravel-faxage/run-tests?label=tests)](https://github.com/webmavens/laravel-faxage/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/webmavens/laravel-faxage/Check%20&%20fix%20styling?label=code%20style)](https://github.com/webmavens/laravel-faxage/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/webmavens/laravel-faxage.svg?style=flat-square)](https://packagist.org/packages/webmavens/laravel-faxage)
-
 ## What It Does
 
 This package allows you to send/resend/list/get and notify faxes through faxage with laravel.
