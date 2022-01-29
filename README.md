@@ -1,5 +1,4 @@
-# Performs action on fax using faxage api
-Send HIPAA Compliant Fax Service by FAXAGE
+# Performs action on fax using faxage api (Send HIPAA Compliant Fax Service by FAXAGE)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/webmavens/laravel-faxage.svg?style=flat-square)](https://packagist.org/packages/webmavens/laravel-faxage)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/webmavens/laravel-faxage/run-tests?label=tests)](https://github.com/webmavens/laravel-faxage/actions?query=workflow%3Arun-tests+branch%3Amain)
