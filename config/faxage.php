@@ -7,7 +7,7 @@ return [
 
     'FAXAGE_COMPANY_ID' => env('FAXAGE_COMPANY_ID'),
 
-    'FAXAGE_SENT_FAX_URL' => 'https://api.faxage.com/httpsfax.php',
+    'FAXAGE_SENT_FAX_URL' => env('FAXAGE_SENT_FAX_URL','https://api.faxage.com/httpsfax.php'),
 
     'FAXAGE_URL_NOTIFY' => env('FAXAGE_URL_NOTIFY'),
 

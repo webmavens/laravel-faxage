@@ -46,6 +46,15 @@ class LaravelFaxage
                 $errors .= ", jobid";
             }
             if ($errors == '') {
+                if(isset($params['faxfiledata'])){
+                   preg_match_all('/<img src="(.*?)"/', $params['faxfiledata'], $match, PREG_PATTERN_ORDER);
+                    if (count($match[1]) < 2) {
+                        $type = pathinfo($match[1][0], PATHINFO_EXTENSION);
+                        $data = file_get_contents($match[1][0]);
+                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        $faxHtml = str_replace($match[1][0], $base64, $params['faxfiledata']);
+                    }
+                }
                 $faxage = array();
                 $faxage['username'] = $configuration['username'];
                 $faxage['company'] = $configuration['company'];
@@ -57,6 +66,7 @@ class LaravelFaxage
                 $faxage['faxfilenames'] = array($params['faxfilenames']);
                 $faxage['faxfiledata'] = array(base64_encode($params['faxfiledata']));
                 $faxage['operation'] = $params['operation'];
+                $faxage['jobtz'] = 3;
                 if($params['operation'] == 'resend'){
                     $faxage['jobid'] = $params['jobid'];
                 }
