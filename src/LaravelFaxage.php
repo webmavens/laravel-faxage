@@ -50,7 +50,7 @@ class LaravelFaxage
                    preg_match_all('/<img src="(.*?)"/', $params['faxfiledata'], $match, PREG_PATTERN_ORDER);
                     if (count($match[1]) < 2) {
                         $type = pathinfo($match[1][0], PATHINFO_EXTENSION);
-                        $data = file_get_contents($match[1][0]);
+                        $data = @file_get_contents($match[1][0]);
                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                         $faxHtml = str_replace($match[1][0], $base64, $params['faxfiledata']);
                     }
