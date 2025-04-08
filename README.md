@@ -26,27 +26,43 @@ FAXAGE_URL_NOTIFY=CALLBACK_URL
 FAXAGE_TAG_NUMBER=YOUR_TAG_NUMBER (EX. 1.123.123.1234)
 ```
 
-- Send Fax
+- Sendfax Operation 
 
 ```php
-$laravelFaxage = new Webmavens\LaravelFaxage();
+$laravelFaxage = new \Webmavens\LaravelFaxage\LaravelFaxage();
+$params = [
+            'recipname'    => 'test',
+            'faxno'        => 8884732963,
+            'faxfilenames' => 'fax.HTML',
+            'faxfiledata'  => '<h1>Hello World</h1>',
+            'operation'    => 'sendfax',
+        ];
 $response = $laravelFaxage->sendFax($params);
 ```
 
 Below parameters is required for sending fax.
 
 ```php
-recipname = DESTINATION_NAME
-faxno = DESTINATION_NUMBER
-faxfilenames = FAX_FILE_NAME
-faxfiledata = FAX_FILE_DATA
-opration = 'sendfax'
+recipname = DESTINATION_NAME(32 characters max)
+faxno = DESTINATION_NUMBER(10 digits, numeric only)
+faxfilenames = FAX_FILE_NAME(Supported File Types: PDF, PS, DOC or DOCX, DOT, WPS, WPD, ODT, RTF, XLS or XLSX, PPT or PPTX, ODS, CSV, HTM, HTML, BMP, GIF, JPG, JPEG, TIF, TIFF, PNG, PCL, TXT)
+faxfiledata = FAX_FILE_DATA(base64-encoded strings that are the
+contents/data of the file in faxfilenames)
+operation = 'sendfax'
 ```
 
-- Resend Fax
+- Resend operation (This operation is used to ‘re-send’ a previously-completed fax)
 
 ```php
-$laravelFaxage = new Webmavens\LaravelFaxage();
+$laravelFaxage = new \Webmavens\LaravelFaxage\LaravelFaxage();
+$params = [
+            'recipname'    => 'test',
+            'faxno'        => 8884732963,
+            'faxfilenames' => 'fax.HTML',
+            'faxfiledata'  => '<h1>Hello World</h1>',
+            'operation'    => 'resend',
+            'jobid'        => 1011792410,
+        ];
 $response = $laravelFaxage->sendFax($params);
 ```
 
@@ -61,25 +77,26 @@ opration = 'resend'
 jobid = FAX_JOB_ID
 ```
 
-- List Fax
+- Listfax Operation (This operation is used to gather a list of incoming faxes for your account. )
 
 ```php
-$laravelFaxage = new Webmavens\LaravelFaxage();
+$laravelFaxage = new \Webmavens\LaravelFaxage\LaravelFaxage();
 $response = $laravelFaxage->listFax();
 ```
 
-- Get Fax
+- Getfax Operation (Thisoperation is used to download a received fax image. Note that faxes will be returned as either PDF’s or TIFF’s, depending on the settings in the website under ‘Admin’ -> ‘Company Settings’ -> ‘Fax Format’. The default is PDF unless changed. )
 
 ```php
-$laravelFaxage = new Webmavens\LaravelFaxage();
-$faxId = FAX_ID
+$laravelFaxage = new \Webmavens\LaravelFaxage\LaravelFaxage();
+$faxId = FAX_ID(The numeric ID of the fax to get, retrieved from the listfax
+operation (the recvid in listfax));
 $response = $laravelFaxage->getFax($faxId);
 ```
 
-- Notify Fax
+- Notify Fax (This operation is used to mark an incoming fax as ‘handled’)
 
 ```php
-$laravelFaxage = new Webmavens\LaravelFaxage();
+$laravelFaxage = new \Webmavens\LaravelFaxage\LaravelFaxage();
 $faxId = FAX_ID
 $response = $laravelFaxage->notifyFaxage($faxId);
 ```
