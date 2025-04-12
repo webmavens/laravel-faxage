@@ -46,8 +46,7 @@ Below parameters is required for sending fax.
 recipname = DESTINATION_NAME(32 characters max)
 faxno = DESTINATION_NUMBER(10 digits, numeric only)
 faxfilenames = FAX_FILE_NAME(Supported File Types: PDF, PS, DOC or DOCX, DOT, WPS, WPD, ODT, RTF, XLS or XLSX, PPT or PPTX, ODS, CSV, HTM, HTML, BMP, GIF, JPG, JPEG, TIF, TIFF, PNG, PCL, TXT)
-faxfiledata = FAX_FILE_DATA(base64-encoded strings that are the
-contents/data of the file in faxfilenames)
+faxfiledata = FAX_FILE_DATA(strings that are the contents/data of the file in faxfilenames)
 operation = 'sendfax'
 ```
 
@@ -73,7 +72,7 @@ recipname = DESTINATION_NAME
 faxno = DESTINATION_NUMBER
 faxfilenames = FAX_FILE_NAME
 faxfiledata = FAX_FILE_DATA
-opration = 'resend'
+operation = 'resend'
 jobid = FAX_JOB_ID
 ```
 
@@ -101,6 +100,10 @@ $faxId = FAX_ID
 $response = $laravelFaxage->notifyFaxage($faxId);
 ```
 
+## Demo Video
+Watch the demo video to learn how to use this package:
+
+👉 [Click here to watch on YouTube](https://youtu.be/c2Zi_S-a65o)
 
 ## Testing
 
