@@ -103,6 +103,8 @@ $response = $laravelFaxage->notifyFaxage($faxId);
 ## Demo Video
 Watch the demo video to learn how to use this package:
 
+[![Package demo](https://img.youtube.com/vi/c2Zi_S-a65o/0.jpg)](https://www.youtube.com/watch?v=c2Zi_S-a65o)
+
 👉 [Click here to watch on YouTube](https://youtu.be/c2Zi_S-a65o)
 
 ## Testing
